@@ -1,0 +1,5 @@
+//this is the day formula
+         const getDaysInMonth = (month, year) => {
+            return new Date(year, month, 0).getDate();
+         }
+         console.log(getDaysInMonth(monthNumber, 2020))

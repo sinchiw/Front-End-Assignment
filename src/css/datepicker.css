@@ -1,0 +1,25 @@
+.datePickerBox{
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   height: 120px;
+   width: 250px;
+
+}
+
+.dateInputField{
+   width: 300px;
+}
+
+.datePickerDisplay{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   width: 230px;
+
+}
+
+.monthDisplay{
+   width: 30px;
+}
