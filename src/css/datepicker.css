@@ -1,0 +1,47 @@
+.datePickerBox{
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   height: 120px;
+   width: 250px;
+
+}
+
+.dateInputField{
+   /* width: 300px; */
+   background-color: Transparent;
+   width: 120px;
+   border: 0px solid;
+
+
+}
+
+.datePickerDisplay{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   width: 230px;
+
+}
+.inputBox{
+   width: 300px;
+   border: 1px solid #3d3d3d;
+   /* background-color: wheat; */
+}
+
+.MainContainer{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   height: 100vh;
+}
+
+.monthDisplay{
+   width: 30px;
+}
+
+input:focus {
+   background-color: rgba(203, 203, 203, 0.622);
+
+ }
