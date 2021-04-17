@@ -3,3 +3,30 @@
             return new Date(year, month, 0).getDate();
          }
          console.log(getDaysInMonth(monthNumber, 2020))
+
+
+          const daySelector = (e) => {
+      if (e.target.id === "up") {
+         const getDaysInMonth = (month, year) => {
+            return new Date(year, month, 0).getDate();
+         }
+         let maxDay = getDaysInMonth(monthNumber + 1, yearsCounter)
+
+         if (indexDay in days) {
+            if (!indexDay[days]) {
+               setDayIndex(prev => prev + 1)
+            }
+         }
+         else {
+            if (indexDay + 1 > maxDay) return
+            setDayIndex(prev => prev + 1)
+            console.log("ive been hit", indexDay)
+         }
+      } else if (e.target.id === "down") {
+         if (indexDay - 1 === 0) {
+            return
+         }
+         setDayIndex(prev => prev - 1)
+
+      }
+   }

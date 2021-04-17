@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../css/datepicker.css'
 
 const DatePicker = () => {
+   const [showDatePicker, setShowDatePicker] = useState(false)
+
    const [monthNumber, setMonthNumber] = useState(0)
    const [month, setMonth] = useState('Jan')
 
@@ -39,18 +41,9 @@ const DatePicker = () => {
             return new Date(year, month, 0).getDate();
          }
          let maxDay = getDaysInMonth(monthNumber + 1, yearsCounter)
-         console.log(maxDay)
-
-         if (indexDay in days) {
-            if (!indexDay[days]) {
-               setDayIndex(prev => prev + 1)
-            }
-         }
-         else {
-            if (indexDay + 1 > maxDay) return
-            setDayIndex(prev => prev + 1)
-            console.log("ive been hit", indexDay)
-         }
+         if (indexDay + 1 > maxDay) return
+         setDayIndex(prev => prev + 1)
+         console.log("ive been hit", indexDay)
       } else if (e.target.id === "down") {
          if (indexDay - 1 === 0) {
             return
@@ -59,6 +52,8 @@ const DatePicker = () => {
 
       }
    }
+
+
 
    const yearsSelector = (e) => {
       if (e.target.id === 'up') {
@@ -72,51 +67,65 @@ const DatePicker = () => {
 
    useEffect(() => {
       setMonth(months[monthNumber])
-      if (indexDay[days]) {
-         return setDay(days[indexDay])
+      if (days[indexDay] !== undefined) {
+         console.log(day)
+         setDay(days[indexDay])
+      } else {
+         const dayString = String(indexDay)
+         setDay(dayString)
       }
-      const dayString = String(indexDay)
-      setDay(dayString)
+
 
       const yearString = String(yearsCounter)
       setYear(yearString)
 
-   }, [monthNumber, indexDay, yearsCounter])
+      if (showDatePicker === false) {
+         const dateString = `${month} ${day}, ${year}`
+         setDateSelected(dateString)
+         console.log(dateSelected)
+      }
 
 
+
+   }, [monthNumber, indexDay, yearsCounter, dateSelected, showDatePicker])
+
+   const datePickerBox =
+      <div className="datePickerBox" onClick={(e) => { e.stopPropagation(); setShowDatePicker(true) }}>
+         <div className="datePickerDisplay">
+            <div className="monthDisplay">
+               <button id="up" className="upArrow" onClick={(e) => monthSelector(e)} >^</button>
+               <p id="dateLabel">{month}</p>
+               <button id="down" className="downArrow" onClick={(e) => monthSelector(e)}>v</button>
+            </div>
+            <div className="dayDisplay">
+               <button id="up" className="upArrow" onClick={(e) => daySelector(e)}>^</button>
+               <p id="datelabel">{day}</p>
+               <button id="down" className="downArrow" onClick={(e) => daySelector(e)} > v</button>
+            </div>
+            <div className="yearDisplay">
+               <button id="up" className="upArrow" onClick={(e) => yearsSelector(e)} >^</button>
+               <p id="datelabel">{year}</p>
+               <button id="down" className="downArrow" onClick={(e) => yearsSelector(e)}>v</button>
+            </div>
+         </div>
+      </div>
 
 
 
    return (
-      <div className='MainContainer'>
-         <div className="leftTabContainer">
+      <div className='MainContainer' onClick={() => { setShowDatePicker(false) }}>
+         <div className="leftTabContainer" >
             <p id="pTitle">0.3.08.Date of</p>
             <button>&#10004; ADS-36</button>
          </div>
          <div className='dateContainer'>
-            <div>
+            <div >
                <p>Date of birth</p>
-               <input value={month} className="dateInputField"></input>
-               <div className="datePickerBox">
-                  <div className="datePickerDisplay">
-                     <div className="monthDisplay">
-                        <button id="up" className="upArrow" onClick={(e) => monthSelector(e)} >^</button>
-                        <p id="dateLabel">{month}</p>
-                        <button id="down" className="downArrow" onClick={(e) => monthSelector(e)}>v</button>
-                     </div>
-                     <div className="dayDisplay">
-                        <button id="up" className="upArrow" onClick={(e) => daySelector(e)}>^</button>
-                        <p id="datelabel">{day}</p>
-                        <button id="down" className="downArrow" onClick={(e) => daySelector(e)} > v</button>
-                     </div>
-                     <div className="yearDisplay">
-                        <button id="up" className="upArrow" onClick={(e) => yearsSelector(e)} >^</button>
-                        <p id="datelabel">{year}</p>
-                        <button id="down" className="downArrow" onClick={(e) => yearsSelector(e)}>v</button>
-                     </div>
-                  </div>
+               <div className="inputBox">
+                  <input className="dateInputField" value={dateSelected} onClick={(e) => { e.stopPropagation(); showDatePicker ? setShowDatePicker(false) : setShowDatePicker(true); console.log(showDatePicker) }}></input>
                </div>
 
+               {showDatePicker ? datePickerBox : null}
             </div>
          </div>
       </div >
