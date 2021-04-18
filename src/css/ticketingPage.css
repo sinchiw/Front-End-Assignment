@@ -13,6 +13,10 @@
    align-items: center;
 }  
 
+.rightPanel{
+   width: 100%;
+}
+
 .classifyPanel{
    width:30em ;
    background-color: violet;

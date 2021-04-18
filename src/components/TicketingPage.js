@@ -63,10 +63,11 @@ const TicketingPage = () => {
                newTask={newTask}
                selectedTask={selectedTask}
                setTickets={setTickets}
+               tickets={tickets}
             />
          </div>
          <div className="rightPanel">
-            Right
+            <Conversation />
          </div>
 
       </div>
