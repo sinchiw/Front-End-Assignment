@@ -1,0 +1,19 @@
+.mainContainer{
+   display: flex;
+   flex-direction: row;
+   height: 100vh;
+}
+
+.leftPanel{
+   width: 4em;
+   height: 100%;
+   background-color: wheat;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}  
+
+.classifyPanel{
+   width:30em ;
+   background-color: violet;
+}
