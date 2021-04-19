@@ -32,9 +32,11 @@ const Conversation = () => {
 
             </div>
          </div>
-         <div className="linebreak"></div>
+
          <div className="textContainer">
-            <input className="inputBox" placeholder="Type a message"></input>
+            <div className="linebreak"></div>
+            <input className="inputBox2" placeholder="Type a message"></input>
+            <button className="sendButton">Send</button>
 
          </div>
 

@@ -15,9 +15,6 @@ const Classify = ({ onsetSeletedTask, setNewTask, newTask, selectedTask, setTick
          Status: "New",
          Goal: selectedTask
       }
-      let addedTickets = tickets
-      // setTickets(prevState =>({}))
-
    }
 
 
