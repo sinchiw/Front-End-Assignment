@@ -3,6 +3,7 @@
    justify-content: center;
    align-items: center;
    background-color: white;
+   margin-top: 20px;
    height: 120px;
    width: 250px;
 
@@ -29,7 +30,24 @@
    border: 1px solid #3d3d3d;
    /* background-color: wheat; */
 }
+#pTitle{
+   color: rgb(198, 68, 217);
+   font-weight: 700;
+}
+.dateContainer{
+   margin-left: -400px;
 
+}
+
+.dateContainer p{
+   color: rgb(139, 139, 139);
+
+}
+.buttonADS{
+   background-color: rgb(53,178,196);
+   border: .2 solid rgba(80, 80, 80, 0.265);
+   color: white;
+}
 .MainContainer{
    display: flex;
    flex-direction: row;
@@ -39,6 +57,15 @@
 
 .monthDisplay{
    width: 30px;
+}
+#up{
+   background-color: transparent;
+   border: transparent;
+}
+
+#down{
+   background-color: transparent;
+   border: transparent;
 }
 
 input:focus {

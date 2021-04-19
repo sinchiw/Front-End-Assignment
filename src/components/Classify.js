@@ -7,7 +7,7 @@ const Classify = ({ onsetSeletedTask, setNewTask, newTask, selectedTask, setTick
    let disableButton = ((25 - newTask.length > 0 && !selectedTask) || (25 - newTask.length <= 0 && !selectedTask) || (newTask.length === 0 && selectedTask)) ? true : false
 
 
-   const addNewTicket = (newTask, selectedTask) => {
+   const addNewTicket = (newTask, selectedTask, tickets) => {
       const newTicket = {
          _id: "5cdb6454107a752w479349f9",
          Title: newTask,
@@ -15,6 +15,10 @@ const Classify = ({ onsetSeletedTask, setNewTask, newTask, selectedTask, setTick
          Status: "New",
          Goal: selectedTask
       }
+
+      const copyTickets = tickets.slice()
+      copyTickets.push(newTicket)
+      setTickets(copyTickets)
    }
 
 
@@ -25,7 +29,7 @@ const Classify = ({ onsetSeletedTask, setNewTask, newTask, selectedTask, setTick
             <p>What's the user asking for?</p>
             <div>
                <ul className="dropdown" >
-                  <li>Select v
+                  <li>{selectedTask ? selectedTask : "Select v"}
                      <ul>
                         <li id="0" onClick={(e) => { selectList = true; onsetSeletedTask(selectedList[e.target.id]) }}>Buy a product</li>
                         <li id="1" onClick={(e) => { selectList = true; onsetSeletedTask(selectedList[e.target.id]) }}>Cancel an account</li>
@@ -41,7 +45,7 @@ const Classify = ({ onsetSeletedTask, setNewTask, newTask, selectedTask, setTick
                <p>{"("}Character left: </p><p id={(25 - newTask.length < 0) ? "pStyle1" : ""}> {25 - newTask.length}{")"}</p>
             </div>
             <div className="emptybox"></div>
-            <button className="proccedButton" onClick={() => addNewTicket(newTask, selectedTask)} disabled={disableButton}>Procced</button>
+            <button className="proccedButton" onClick={() => addNewTicket(newTask, selectedTask, tickets)} disabled={disableButton}>Procced</button>
 
          </div>
 

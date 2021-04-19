@@ -35,9 +35,9 @@ const Conversation = () => {
 
          <div className="textContainer">
             <div className="linebreak"></div>
-            <input className="inputBox2" placeholder="Type a message"></input>
-            <button className="sendButton">Send</button>
-
+            <form>
+               <input className="inputBox2" placeholder="Type a message"></input>
+               <button type="submit" className="sendButton">Send</button></form>
          </div>
 
       </div>

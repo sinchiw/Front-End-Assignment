@@ -6,7 +6,17 @@
    background-color: rgb(219, 219, 219);
    display: flex;
    justify-content: center;
+   align-items: center;
+}
 
+.profileImage{
+   width: 40px;
+   height: 40px;
+   margin-top: 30px;
+   border-radius: 50%;
+   background-color: rgb(219, 219, 219);
+   display: flex;
+   justify-content: center;
    align-items: center;
 
 }
@@ -23,4 +33,11 @@
    border-radius: 50%;
    background-color: rgba(255, 0, 0, 0.889)
    
+}
+.snoozeStatus{
+   height: 10px;
+   width: 10px;
+   border-radius: 50%;
+   background-color: rgba(239, 211, 28, 0.889)
+
 }
