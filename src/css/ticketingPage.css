@@ -5,9 +5,9 @@
 }
 
 .leftPanel{
-   width: 4em;
+   width: 80px;
    height: 100%;
-   background-color: wheat;
+   background-color: rgb(255,255,255);
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,9 +15,13 @@
 
 .rightPanel{
    width: 100%;
+   background-color: rgb(255,255,255);
 }
 
 .classifyPanel{
-   width:30em ;
-   background-color: violet;
+   width:700px ;
+   /* min-width: 30en; */
+   background-color: rgb(245,245,245);
 }
+
+

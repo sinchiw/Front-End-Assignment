@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import '../css/asaignee.css'
 const Assignee = ({ tickets, oncurrentTask }) => {
-
    let snoozeArray = []
-   let currentUser = false
-
    const currentSelection = (e) => {
       console.log(e.key)
    }
@@ -21,12 +18,8 @@ const Assignee = ({ tickets, oncurrentTask }) => {
             <div onClick={(e) => currentSelection(e)} key={newTicket.id} className="userProfile">
                {newTicket.Assignee.match(/\b(\w)/g).join('')}
             </div>
-
             <div className='status'>
-
             </div>
-
-
          </div>
       )
    })

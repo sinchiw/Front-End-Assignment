@@ -4,13 +4,48 @@
     display: inline-block;
 
     padding: -0px 4px 0px 0px;
-    margin-top: -19px;
+    margin-top: -10px;
     list-style: none;
     position:absolute;
 
 }
+.classifyMainContainer p{
+   color: rgb(178, 177, 177);
+
+}
+#pStyle1{
+   color: red;
+}
+.characterCountBox{
+   display: flex;
+   flex-direction: row;
+}
+.classifyText{
+   color: rgb(86,191,205);
+
+}
+#pShownToUser{
+   margin-top: 40px;
+
+}
+.classifyBox{
+margin-left: 30px;
+}
 #inputTag{
-   margin-top: 10px;
+   border: 1px solid rgba(136, 134, 134, 0.553);
+   height: 40px;
+   width: 370px;
+   background-color: transparent;
+}
+
+.emptybox{
+
+   width: 100%;
+   height: 55vh;
+
+}
+.proccedButton{
+   margin-left: 320px;
 }
 
 .dropdown li
