@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/asaignee.css'
 const Assignee = ({ tickets, oncurrentTask }) => {
    let snoozeArray = []
-   const currentSelection = (e) => {
-      console.log(e.key)
-   }
 
+   //filtering out the tickets base on status
    const renderNewTicket = tickets.filter((ticket) => {
       if (ticket.Status === "Snooze") {
          snoozeArray.push(ticket)
@@ -15,11 +13,10 @@ const Assignee = ({ tickets, oncurrentTask }) => {
    }).map((newTicket, index) => {
       return (
          <div key={newTicket._id}>
-            <div onClick={(e) => currentSelection(e)} key={newTicket.id} className="userProfile">
+            <div className="userProfile">
                {newTicket.Assignee.match(/\b(\w)/g).join('')}
             </div>
-            <div className='status'>
-            </div>
+            <div className='status'></div>
          </div>
       )
    })
@@ -27,27 +24,20 @@ const Assignee = ({ tickets, oncurrentTask }) => {
 
    const renderSnooze = snoozeArray.map((snoozeTicket) => {
       return (
-         <div key={snoozeTicket.id} className="userProfile">
-            {snoozeTicket.Assignee.match(/\b(\w)/g).join('')}
+         <div key={snoozeTicket._id} >
+            <div className="userProfile">
+               {snoozeTicket.Assignee.match(/\b(\w)/g).join('')}
+            </div>
+            <div className='snoozeStatus'></div>
          </div>
+
       )
    })
-
-   // tickets.map((ticket) => {
-
-
-   //    return (
-   //       <div key={ticket._id} className="userProfile">
-   //          {ticket.Assignee.match(/\b(\w)/g).join('')}
-   //       </div>
-
-   //    )
-   // })
-
-
-
    return (
       <div>
+         <div className="profileImage">
+            PI
+         </div>
          {renderNewTicket}
          <div className="lineBreak"></div>
          <div>

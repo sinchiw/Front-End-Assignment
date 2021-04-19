@@ -105,3 +105,9 @@
    width : 80%;
    height: 86px;
 }
+
+.textContainer p{
+   color: rgb(178, 177, 177);
+   margin-top: 40px;
+   margin-left: 20px;
+}

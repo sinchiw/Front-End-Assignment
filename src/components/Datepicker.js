@@ -21,31 +21,39 @@ const DatePicker = () => {
    const days = { 1: "01", 2: "02", 3: "03", 4: "04", 5: "05", 6: "06", 7: "07", 8: "08", 9: "09" }
 
 
-   const monthSelector = (e) => {
+   const monthPicker = (e) => {
       if (e.target.id === "up") {
          if (months[monthNumber + 1] === undefined) {
+            setMonthNumber(0)
             return
          }
          setMonthNumber((prev) => prev + 1)
       } else if (e.target.id === "down") {
          if (monthNumber === 0) {
+            setMonthNumber(months.length - 1)
             return
          }
          setMonthNumber((prev) => prev - 1)
       }
    }
 
-   const daySelector = (e) => {
+   const dayPicker = (e) => {
+      const getDaysInMonth = (month, year) => {
+         return new Date(year, month, 0).getDate();
+      }
+      let maxDay = getDaysInMonth(monthNumber + 1, yearsCounter)
       if (e.target.id === "up") {
-         const getDaysInMonth = (month, year) => {
-            return new Date(year, month, 0).getDate();
+
+
+         if (indexDay + 1 > maxDay) {
+            return setDayIndex(1)
          }
-         let maxDay = getDaysInMonth(monthNumber + 1, yearsCounter)
-         if (indexDay + 1 > maxDay) return
+
          setDayIndex(prev => prev + 1)
          console.log("ive been hit", indexDay)
       } else if (e.target.id === "down") {
          if (indexDay - 1 === 0) {
+            setDayIndex(maxDay)
             return
          }
          setDayIndex(prev => prev - 1)
@@ -55,17 +63,17 @@ const DatePicker = () => {
 
 
 
-   const yearsSelector = (e) => {
+   const yearPicker = (e) => {
       if (e.target.id === 'up') {
          if (year > 2020) return
          setYearCounter(prev => prev + 1)
       } else if (e.target.id === "down") {
          setYearCounter(prev => prev - 1)
-         console.log(yearsCounter)
       }
    }
 
    useEffect(() => {
+
       setMonth(months[monthNumber])
       if (days[indexDay] !== undefined) {
          console.log(day)
@@ -75,14 +83,12 @@ const DatePicker = () => {
          setDay(dayString)
       }
 
-
       const yearString = String(yearsCounter)
       setYear(yearString)
 
       if (showDatePicker === false) {
          const dateString = `${month} ${day}, ${year}`
          setDateSelected(dateString)
-         console.log(dateSelected)
       }
 
 
@@ -93,19 +99,19 @@ const DatePicker = () => {
       <div className="datePickerBox" onClick={(e) => { e.stopPropagation(); setShowDatePicker(true) }}>
          <div className="datePickerDisplay">
             <div className="monthDisplay">
-               <button id="up" className="upArrow" onClick={(e) => monthSelector(e)} >^</button>
+               <button id="up" className="upArrow" onClick={(e) => monthPicker(e)} >^</button>
                <p id="dateLabel">{month}</p>
-               <button id="down" className="downArrow" onClick={(e) => monthSelector(e)}>v</button>
+               <button id="down" className="downArrow" onClick={(e) => monthPicker(e)}>v</button>
             </div>
             <div className="dayDisplay">
-               <button id="up" className="upArrow" onClick={(e) => daySelector(e)}>^</button>
+               <button id="up" className="upArrow" onClick={(e) => dayPicker(e)}>^</button>
                <p id="datelabel">{day}</p>
-               <button id="down" className="downArrow" onClick={(e) => daySelector(e)} > v</button>
+               <button id="down" className="downArrow" onClick={(e) => dayPicker(e)} > v</button>
             </div>
             <div className="yearDisplay">
-               <button id="up" className="upArrow" onClick={(e) => yearsSelector(e)} >^</button>
+               <button id="up" className="upArrow" onClick={(e) => yearPicker(e)} >^</button>
                <p id="datelabel">{year}</p>
-               <button id="down" className="downArrow" onClick={(e) => yearsSelector(e)}>v</button>
+               <button id="down" className="downArrow" onClick={(e) => yearPicker(e)}>v</button>
             </div>
          </div>
       </div>
@@ -116,15 +122,14 @@ const DatePicker = () => {
       <div className='MainContainer' onClick={() => { setShowDatePicker(false) }}>
          <div className="leftTabContainer" >
             <p id="pTitle">0.3.08.Date of</p>
-            <button>&#10004; ADS-36</button>
+            <button className="buttonADS">&#10004; ADS-36</button>
          </div>
          <div className='dateContainer'>
             <div >
-               <p>Date of birth</p>
+               <p >Date of birth</p>
                <div className="inputBox">
                   <input className="dateInputField" value={dateSelected} onClick={(e) => { e.stopPropagation(); showDatePicker ? setShowDatePicker(false) : setShowDatePicker(true); console.log(showDatePicker) }}></input>
                </div>
-
                {showDatePicker ? datePickerBox : null}
             </div>
          </div>
