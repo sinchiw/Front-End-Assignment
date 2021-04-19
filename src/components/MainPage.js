@@ -8,9 +8,9 @@ const MainPage = () => {
 
    return (
       < div >
-         <TicketingPage />
+         {/* <TicketingPage /> */}
          {/*uncomment this to see the DatePicker */}
-         {/* <DatePicker /> */}
+         <DatePicker />
       </div >
    )
 }
