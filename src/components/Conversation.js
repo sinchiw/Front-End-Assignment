@@ -1,7 +1,14 @@
 import React from 'react'
 import '../css/conversation.css'
-import logo from '../Assets/clock.png'
-const Conversation = () => {
+
+const Conversation = (showTextbox) => {
+   console.log(showTextbox)
+
+   const showDisableTextBox = <p> &#10680;	Text A mssage</p>
+   const showTextBoxField = <form>
+      <input onClick={(e) => { console.log(e.target.value) }} className="inputBox2" placeholder="Type a message"></input>
+      <button className="sendButton">Send</button>
+   </form>
    return (
       <div className="mainConvoContainer">
          <div className="taskAndSettingContainer">
@@ -35,9 +42,8 @@ const Conversation = () => {
 
          <div className="textContainer">
             <div className="linebreak"></div>
-            <form>
-               <input className="inputBox2" placeholder="Type a message"></input>
-               <button type="submit" className="sendButton">Send</button></form>
+            {/* the inputfield should of dissapear when shoTextbox is true*/}
+            {showTextbox === true ? showDisableTextBox : showTextBoxField}
          </div>
 
       </div>

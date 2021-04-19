@@ -45,10 +45,11 @@ const TicketingPage = () => {
 
    const [selectedTask, setSelectedTask] = useState('')
    const [newTask, setNewTask] = useState('')
+   const [showTextbox, setShowTextBox] = useState(true)
 
    useEffect(() => {
       console.log(selectedTask)
-   }, [selectedTask, newTask, tickets])
+   }, [selectedTask, newTask, tickets, showTextbox])
 
 
 
@@ -64,10 +65,11 @@ const TicketingPage = () => {
                selectedTask={selectedTask}
                setTickets={setTickets}
                tickets={tickets}
+               setShowTextBox={setShowTextBox}
             />
          </div>
          <div className="rightPanel">
-            <Conversation />
+            <Conversation showTextbox={showTextbox} />
          </div>
 
       </div>
